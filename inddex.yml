@@ -1,0 +1,168 @@
+platform: ElasticSearch
+source: windows_security
+description: Text that describe current mapping
+
+log_source:
+  index: [winlogbeat-*, logs-*]
+
+default_log_source:
+  index: winlogbeat-*
+
+field_mapping:
+  EventID: event.id
+  ParentImage: process_parent_path.keyword
+  AccessMask: object_access_mask.keyword
+  AccountName: user.name
+  AllowedToDelegateTo:
+    - target_host_allowed_to_delegate.keyword
+    - target_user_allowed_to_delegate.keyword
+  AttributeLDAPDisplayName: dsobject_attribute_name.keyword
+  AuditPolicyChanges: policy_changes.keyword
+  AuthenticationPackageName: logon_authentication_package_name.keyword
+  CallingProcessName: CallingProcessName.keyword
+  Channel: log_name
+  ComputerName: host_name
+  EventType: event_type 
+  FailureReason: Failure reason.keyword
+  FileName: FileName.keyword
+  GrantedAccess: process_granted_access.keyword
+  Hashes:
+    - hash_imphash
+    - hash_md5
+    - hash_sha1
+    - hash_sha256
+  HiveName: HiveName.keyword
+  IpAddress: source.ip
+  IpPort: source.port
+  KeyLength: logon_key_length.keyword
+  LogonProcessName: logon_process_name.keyword
+  LogonType: logon_type
+  LinkName: file_link_name.keyword
+  MemberName: target_user_name
+  MemberSid: target_user_sid
+  NewProcessName: process_path.keyword
+  ObjectClass: dsobject_class.keyword
+  ObjectName: object_name.keyword
+  ObjectType: object_type.keyword
+  ObjectValueName: registry_key_value_name.keyword
+  Path: Path.keyword
+  CommandLine: process_command_line.keyword
+  OldUacValue:
+    - target_host_old_uac_value.keyword
+    - target_user_old_uac_value.keyword
+  CertIssuerName: CertIssuerName.keyword
+  SubStatus: event_sub_status.keyword
+  DisplayName:
+    - target_user_display.keyword
+    - target_host_display_name.keyword
+
+  TaskContent: scheduled_task_content.keyword
+  ServiceSid: service_ticket_id
+  CertThumbprint: CertThumbprint.keyword
+  ClassName: device_class_name.keyword
+  NotificationPackageName: logon_notification_package_name.keyword
+  NewSd:
+    - object_new_sd.keyword
+    - share_new_sd.keyword
+  TestSigning: TestSigning.keyword
+  TargetInfo: service_host_info.keyword
+  ClientProcessId: process_id
+  ParentProcessId: process_parent_id
+  AccessList:
+    - object_access_list.keyword
+    - user_access_list
+  GroupMembership: user_group_membership.keyword
+  FilterName: filtering_name.keyword
+  ChangeType: filtering_change_type.keyword
+  LayerName: filtering_layer_name.keyword
+  ServiceAccount: service_account_name.keyword
+  AttributeValue: dsobject_attribute_value.keyword
+  SessionName: session_name.keyword
+  TaskName:
+    - scheduled_task_name.keyword
+    - task_name.keyword
+  ObjectDN: dsobject_dn.keyword
+  TemplateContent: TemplateContent.keyword
+  NewTemplateContent: NewTemplateContent.keyword
+  SourcePort: source.port
+  PasswordLastSet: target_host_password_last_set.keyword
+  PrivilegeList: user_privilege_list.keyword
+  DeviceDescription: device_description.keyword
+  TargetServerName: target_server_name.keyword
+  NewTargetUserName: target_user_new_name.keyword
+  OperationType: object_operation_type.keyword
+  DestPort: destination.port
+  ServiceStartType: service_start_type.keyword
+  OldTargetUserName: target_user_old_name,keyword
+  UserPrincipalName:
+    - target_host_principal_name.keyword
+    - target_user_principal_name.keyword
+  Accesses: Accesses.keyword
+  DnsHostName: target_host_dns_host_name.keyword
+  DisableIntegrityChecks: DisableIntegrityChecks.keyword
+  AuditSourceName: event_source_name.keyword
+  Workstation: source_host_name.keyword
+  DestAddress: DestAddress
+  PreAuthType: service_ticket_preauth_type.keyword
+  SecurityPackageName: logon_security_package_name.keyword
+  SubjectLogonId: user_logon_id.keyword
+  NewUacValue:
+    - target_host_new_uac_value.keyword
+    - target_user_new_uac_value.keyword
+  EnabledPrivilegeList: target_user_enabled_privilege_list.keyword
+  RelativeTargetName: share_relative_target_name.keyword
+  CertSerialNumber: CertSerialNumber.keyword
+  SidHistory: group_sid_history.keyword
+  TargetLogonId: target_user_logon_id
+  KernelDebug: KernelDebug.keyword
+  CallerProcessName: process_path.keyword
+  ProcessName: process_path.keyword
+  Properties: object_properties.keyword
+  UserAccountControl:
+    - target_host_user_account_control.keyword
+    - target_user_account_control
+  RegistryValue: registry_key_value.keyword
+  SecurityID: SecurityID
+  ServiceFileName: service_image_path.keyword
+  SecurityDescriptor: scheduled_task_content.keyword
+  ServiceName: service_name
+  ShareName: share_name
+  NewValue: NewValue.keyword
+  Source: Status.keyword
+  Status: event_status.keyword
+  SubjectDomainName: user_domain
+  SubjectUserName: user_name
+  SubjectUserSid: user_sid
+  SourceAddr: source.ip
+  SourceAddress: source.ip
+  TargetName: credentials_read.keyword
+  ServicePrincipalNames: target_host_service_principal_names.keyword
+  TargetDomainName: target_user_domain.keyword
+  TargetSid: target_user_sid
+  TargetUserName: user_name.keyword
+  ObjectServer: object_server.keyword
+  TargetUserSid: user_sid
+  TicketEncryptionType: ticket_encryption_type.keyword
+  TicketOptions: ticket_options.keyword
+  WorkstationName: src_host_name.keyword
+  TransmittedServices: logon_transmitted_services.keyword
+  AuthenticationAlgorithm: AuthenticationAlgorithm.keyword
+  LayerRTID: network_layer_id
+  BSSID: BSSID
+  BSSType: BSSType
+  CipherAlgorithm: CipherAlgorithm
+  ConnectionId: ConnectionId
+  ConnectionMode: ConnectionMode
+  InterfaceDescription: InterfaceDescription
+  InterfaceGuid: host_interface_guid
+  OnexEnabled: OnexEnabled
+  PHYType: PHYType
+  ProfileName: ProfileName
+  SSID: wireless_ssid
+  Domain: domain_name
+  ServiceType: service_type
+  SourceName: event_source_name
+  StartType: service_start_type
+  UserID: dst_user_id
+  ParentProcessName: process_parent_path.keyword
+  Service: service_name
